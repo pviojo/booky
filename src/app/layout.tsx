@@ -19,8 +19,8 @@ const typography = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pablo Viojo",
-  description: "Portfolio de Pablo Viojo",
+  title: "Booky",
+  description: "Simple Bookmark Tool",
 };
 
 export default function RootLayout({
@@ -63,7 +63,7 @@ export default function RootLayout({
                 <br />
                 Fork on
                 {' '}
-                <a className="underline" href="https://github.com/pviojo/portfolio" target='_blank' rel="noreferrer">
+                <a className="underline" href="https://github.com/pviojo/booky" target='_blank' rel="noreferrer">
                   GitHub
                 </a>
               </div>
