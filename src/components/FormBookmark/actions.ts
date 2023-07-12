@@ -1,0 +1,53 @@
+"use server";
+
+import * as cheerio from 'cheerio';
+
+import { createBookmark } from '@/lib/database';
+import { revalidatePath } from 'next/cache';
+
+function getFixedUrl(url: string) {
+  let fixedUrl = url;
+  if (!/^https?:\/\//i.test(fixedUrl)) {
+    fixedUrl = 'https://' + fixedUrl;
+  }
+  return fixedUrl;
+}
+export async function retrieveUrlInfo(url: string) {
+  const fixedUrl = getFixedUrl(url);
+  const rsp = await fetch(fixedUrl)
+    .catch((err) => { console.log(err) }) as Response
+
+  if (!rsp?.ok) {
+    return {
+      status: false,
+      error: 'URL not retrieved'
+    }
+  }
+  const body = await rsp.text();
+
+  const $ = cheerio.load(body);
+
+  const title = $('title').text() || '';
+  const description = $('meta[name="description"]').attr('content') || '';
+
+  return {
+    status: true,
+    title,
+    description
+  };
+}
+
+export async function saveBookmark(data: FormData, authorId: number) {
+  if (!data.get('url')) {
+    return null;
+  }
+  const fixedUrl = getFixedUrl(data.get('url') as string);
+  console.log('fixed url: ' + fixedUrl, authorId);
+  await createBookmark(
+    fixedUrl,
+    data.get('title') as string,
+    data.get('description') as string,
+    authorId,
+  )
+  revalidatePath('/bookmarks');
+}

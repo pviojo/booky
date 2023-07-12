@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  body {
+    @apply dark:bg-gray-800 bg-white;
+  }
+  .bg-marked {
+    @apply dark:bg-[#3e4a5b] bg-[#f1f1f1];
+  }
+  .tag {
+    @apply bg-marked p-2 text-sm rounded-lg inline-block mr-2 mb-4;
+  }
+  .section-title {
+    @apply text-2xl mb-8 color-purple;
+  }
+  .page {
+    @apply p-10;
+  }
+  .page-title {
+    @apply text-4xl mb-8 color-purple;
+  }
+  .p {
+    @apply mb-8;
+  }
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.border-sep {
+}
+
+.bg-gray-2 {
+  background: #1b232e;
+}
+
+.bg-gray-3 {
+  background: #313e50;
+}
+
+.color-purple {
+  color: #7145d5;
+}
+
+.dark .color-purple {
+  color: #a489e2;
+}
+
+.border-gray {
+  @apply border-gray-300 dark:border-gray-500;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  @apply mb-4 gap-4;
+
+  input,
+  textarea {
+    @apply border rounded border-gray p-2;
+  }
+}
+.field-suffix {
+  grid-template-columns: 200px 1fr auto;
+}
+
+.button {
+  @apply border border-gray font-bold py-2 px-4 rounded inline-flex items-center cursor-pointer;
+}
