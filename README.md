@@ -1,6 +1,6 @@
-# Pablo Viojo portfolio
+# Booky
 
-A Next.js (13) app used for https://pablo-viojo.com
+Simple Next.js (13) used to store bookmarks
 
 ## Getting Started
 
