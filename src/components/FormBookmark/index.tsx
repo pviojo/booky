@@ -54,20 +54,21 @@ export default function FormBookmark(
       </div>);
   }
   return (
-    <div className='mb-10'>
+    <div className='mb-10 mt-10'>
       <form>
         <div className='field field-suffix'>
           <label htmlFor="url">Url</label>
           <input id="url" name="url" onBlur={getInfo} type="text" placeholder='Url...' ref={urlRef} />
           <button className="button" formAction={getInfo}>{isPendingRetrieving ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Get Info'}</button>
         </div>
-        <div className='field field-suffix'>
+        {error && <div className='field field-suffix'>
           <div></div>
-          {error && <div className="p-4 bg-red-100 text-red-700 rounded">
+          <div className="p-4 bg-red-100 text-red-700 rounded">
             <FontAwesomeIcon icon={faTimesCircle} className='mr-2' />
             {error}.
-          </div>}
+          </div>
         </div>
+        }
 
         <div className='field'>
           <label htmlFor="title">Title</label>
@@ -77,12 +78,17 @@ export default function FormBookmark(
           <label htmlFor="description">Description</label>
           <textarea disabled={isPendingRetrieving} id="description" name="description" placeholder='Description...' ref={descriptionRef} />
         </div>
-        <button className="button" disabled={isPendingRetrieving} type="submit"
-          formAction={(data: FormData) => saveBookmark(data, authorId)}>
-          <FontAwesomeIcon icon={faSave} className='mr-2' />
-          Save bookmark
-        </button>
-        <a className='ml-4 cursor-pointer' onClick={() => setShowForm(false)}>Close</a>
+        <div className='field'>
+          <div />
+          <div>
+            <button className="button" disabled={isPendingRetrieving} type="submit"
+              formAction={(data: FormData) => saveBookmark(data, authorId)}>
+              <FontAwesomeIcon icon={faSave} className='mr-2' />
+              Save bookmark
+            </button>
+            <a className='ml-4 cursor-pointer' onClick={() => setShowForm(false)}>Close</a>
+          </div>
+        </div>
       </form>
     </div>
   )

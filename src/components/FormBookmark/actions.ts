@@ -28,7 +28,7 @@ export async function retrieveUrlInfo(url: string) {
   const $ = cheerio.load(body);
 
   const title = $('title').text() || '';
-  const description = $('meta[name="description"]').attr('content') || '';
+  const description = $('meta[name="description"]').attr('content') || $('meta[name="twitter:description"]').attr('content') || '';
 
   return {
     status: true,

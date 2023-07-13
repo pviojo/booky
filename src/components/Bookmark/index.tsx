@@ -10,7 +10,7 @@ export default function Bookmark({
   bookmark: BookmarkModel
 }) {
   return (
-    <div className='py-4 [&:not(:last-child)]:border-b border-gray'>
+    <div>
       {bookmark.title && <div className='text-lg'>
         {bookmark.title}
       </div>

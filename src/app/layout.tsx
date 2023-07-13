@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 import pjson from '../../package.json';
 
 import type { Metadata } from "next";
@@ -45,14 +45,14 @@ export default function RootLayout({
             </Script>
           </> : null}
         <Providers>
-          <div className=" p-3 px-3 md:px-10 absolute top-0 right-0 left-0 flex justify-between">
+          <div className=" p-3 px-3 md:px-10 flex justify-between">
             <div />
             <div>
               <ThemeButton />
             </div>
           </div>
           {children}
-          <div className="mb-5">
+          <div className="mt-20 mb-5">
             <div className="inner p-3 px-11 flex justify-between items-end">
               <div className='text-xs'>
                 <FontAwesomeIcon icon={faHeart}
