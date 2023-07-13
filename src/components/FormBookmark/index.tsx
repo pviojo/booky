@@ -20,6 +20,13 @@ export default function FormBookmark(
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
 
+  const clearForm = () => {
+    if (urlRef.current) { urlRef.current.value = ""; }
+    if (titleRef.current) { titleRef.current.value = ""; }
+    if (descriptionRef.current) { descriptionRef.current.value = ""; }
+    setError(null);
+  }
+
   const getInfo = async () => {
     startTransitionRetrieve(async () => {
       if (urlRef.current && urlRef.current.value) {
@@ -47,7 +54,7 @@ export default function FormBookmark(
   if (!showForm) {
     return (
       <div className='mb-10'>
-        <button className='button' onClick={() => setShowForm(true)}>
+        <button className='button' onClick={() => { clearForm(); setShowForm(true); }}>
           <FontAwesomeIcon icon={faPlus} className='mr-2' />
           Add Bookmark
         </button>
@@ -82,7 +89,10 @@ export default function FormBookmark(
           <div />
           <div>
             <button className="button" disabled={isPendingRetrieving} type="submit"
-              formAction={(data: FormData) => saveBookmark(data, authorId)}>
+              formAction={async (data: FormData) => {
+                await saveBookmark(data, authorId)
+                setShowForm(false);
+              }}>
               <FontAwesomeIcon icon={faSave} className='mr-2' />
               Save bookmark
             </button>
