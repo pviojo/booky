@@ -15,7 +15,7 @@ function getFixedUrl(url: string) {
 export async function retrieveUrlInfo(url: string) {
   const fixedUrl = getFixedUrl(url);
   const rsp = await fetch(fixedUrl)
-    .catch((err) => { console.log(err) }) as Response
+    .catch((err) => { console.error(err) }) as Response
 
   if (!rsp?.ok) {
     return {
@@ -42,7 +42,6 @@ export async function saveBookmark(data: FormData, authorId: number) {
     return null;
   }
   const fixedUrl = getFixedUrl(data.get('url') as string);
-  console.log('fixed url: ' + fixedUrl, authorId);
   await createBookmark(
     fixedUrl,
     data.get('title') as string,
