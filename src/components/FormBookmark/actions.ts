@@ -2,7 +2,7 @@
 
 import * as cheerio from 'cheerio';
 
-import { createBookmark } from '@/lib/database';
+import { createBookmark, deleteBookmark } from '@/lib/database';
 import { revalidatePath } from 'next/cache';
 
 function getFixedUrl(url: string) {
@@ -49,5 +49,10 @@ export async function saveBookmark(data: FormData, authorId: number) {
     data.get('description') as string,
     authorId,
   )
+  revalidatePath('/bookmarks');
+}
+
+export async function deleteBookmarkAction(id: number) {
+  await deleteBookmark(id)
   revalidatePath('/bookmarks');
 }

@@ -31,6 +31,15 @@ export async function createBookmark(url: string, title: string, description: st
   return bookmarks
 }
 
+export async function deleteBookmark(id: number) {
+  const rsp = await prisma.bookmark.delete({
+    where: {
+      id
+    }
+  })
+  return rsp
+}
+
 /*main()
   .then(async () => {
     await prisma.$disconnect()
@@ -40,3 +49,4 @@ export async function createBookmark(url: string, title: string, description: st
     await prisma.$disconnect()
     process.exit(1)
   })*/
+

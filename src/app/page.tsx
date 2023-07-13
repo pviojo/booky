@@ -23,8 +23,8 @@ export default async function Home({
             <>{
               bookmarks.map((bookmark, i) => <div className="gap-6 flex py-4 [&:not(:last-child)]:border-b border-gray" key={bookmark.id} >
                 <div style={{ width: 40, height: 40 }} className="text-sm aspect-square inline-block bg-gray-200 dark:bg-gray-500 rounded-full grid items-center justify-center mt-1"><span>{i + 1}</span></div>
-                <div className="">
-                  <Bookmark bookmark={bookmark} />
+                <div className="flex-auto">
+                  <Bookmark bookmark={bookmark} isAuthenticated={isAuthenticated} />
                 </div>
               </div>)
             }

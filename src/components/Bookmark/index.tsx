@@ -1,16 +1,19 @@
 import { BookmarkModel } from '@/types'
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Prisma } from '@prisma/client'
+import DeleteBookmarkButton from '../DeleteBookmarkButton'
 
 
 export default function Bookmark({
-  bookmark
+  bookmark,
+  isAuthenticated,
 }: {
-  bookmark: BookmarkModel
+  bookmark: BookmarkModel,
+  isAuthenticated: boolean,
 }) {
   return (
-    <div>
+    <div className='relative'>
+      {isAuthenticated && <DeleteBookmarkButton id={bookmark.id} />}
       {bookmark.title && <div className='text-lg'>
         {bookmark.title}
       </div>
