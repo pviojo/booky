@@ -27,25 +27,32 @@ export async function retrieveUrlInfo(url: string) {
 
   const $ = cheerio.load(body);
 
-  const title = $('title').text() || '';
-  const description = $('meta[name="description"]').attr('content') || $('meta[name="twitter:description"]').attr('content') || '';
+  const title = $('meta[property="og:title"]').attr('content') || $('meta[property="twitter:title"]').attr('content') || $('title').text() || '';
+  const description = $('meta[name="description"]').attr('content') || $('meta[property="og:description"]').attr('content') || $('meta[property="twitter:description"]').attr('content') || '';
+  const image = $('meta[property="og:image"]').attr('content') || $('meta[property="twitter:image"]').attr('content') || '';
 
   return {
     status: true,
     title,
-    description
+    description,
+    image
   };
 }
 
-export async function saveBookmark(data: FormData, authorId: number) {
+export async function saveBookmark(data: FormData, image: string | null, authorId: number) {
   if (!data.get('url')) {
     return null;
   }
   const fixedUrl = getFixedUrl(data.get('url') as string);
+  let tagsString = data.get('tags') as string;
+  const tags = tagsString.split(',').map(x => x.trim())
+
   await createBookmark(
     fixedUrl,
     data.get('title') as string,
     data.get('description') as string,
+    tags,
+    image,
     authorId,
   )
   revalidatePath('/bookmarks');

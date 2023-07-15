@@ -11,7 +11,7 @@ export default async function Home({
 }) {
   const bookmarks = await getBookmarksForAuthor(AUTHOR_ID);
 
-  const isAuthenticated = searchParams?.t === process.env.ACCESS_TOKEN;
+  const isAuthenticated = process.env.NODE_ENV === 'development' || searchParams?.t === process.env.ACCESS_TOKEN;
 
   return (
     <div className="inner">

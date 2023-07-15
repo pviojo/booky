@@ -11,16 +11,25 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  name      String?
   bookmarks Bookmark[]
 }
+
 model Bookmark {
-  id        Int     @id @default(autoincrement())
-  title     String
-  url       String
-  description       String
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  id          Int    @id @default(autoincrement())
+  title       String
+  url         String
+  image       String @default("")
+  description String
+  author      User   @relation(fields: [authorId], references: [id])
+  authorId    Int
+  tags        Tag[]
+}
+
+model Tag {
+  id        Int        @id @default(autoincrement())
+  name      String
+  bookmarks Bookmark[]
 }
