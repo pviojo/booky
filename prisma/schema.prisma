@@ -18,12 +18,13 @@ model User {
 }
 
 model Bookmark {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   url         String
-  image       String @default("")
+  image       String   @default("")
+  createdAt   DateTime @default(now())
   description String
-  author      User   @relation(fields: [authorId], references: [id])
+  author      User     @relation(fields: [authorId], references: [id])
   authorId    Int
   tags        Tag[]
 }

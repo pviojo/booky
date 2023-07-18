@@ -19,6 +19,9 @@
   .tag {
     @apply bg-marked p-2 text-sm rounded-lg inline-block mr-2 mb-4;
   }
+  .tag-empty {
+    @apply p-1 text-sm inline-block mr-0 mb-1;
+  }
   .section-title {
     @apply text-2xl mb-8 color-purple;
   }

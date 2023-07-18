@@ -15,6 +15,7 @@ export type BookmarkModel = {
   id: number,
   title: string,
   url: string,
+  createdAt: Date,
   image: string,
   tags?: TagModel[],
   description: string,

@@ -96,3 +96,20 @@ export async function deleteBookmark(id: number) {
     process.exit(1)
   })*/
 
+
+
+
+export async function getTagCloudForAuthor(authorId: number) {
+  const tags = await prisma.tag.findMany({
+    include: {
+      _count: {
+        select: { bookmarks: { where: { authorId } } },
+      },
+    },
+    orderBy: {
+      name: 'asc',
+    },
+
+  })
+  return tags
+}

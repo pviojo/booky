@@ -1,9 +1,13 @@
+
+"use client";
 import { BookmarkModel } from '@/types'
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DeleteBookmarkButton from '../DeleteBookmarkButton'
 import Link from 'next/link'
-
+import dayjs from 'dayjs'
+import { faCalendar } from '@fortawesome/free-regular-svg-icons'
 
 export default function Bookmark({
   bookmark,
@@ -24,6 +28,10 @@ export default function Bookmark({
             {bookmark.url}
           </a>
 
+          {bookmark.createdAt && <div className='text-xs mt-2'>
+            <FontAwesomeIcon icon={faCalendar} className='mr-2' />{dayjs(bookmark.createdAt).format('YYYY-MM-DD HH:mm')}
+          </div>}
+
         </div>
         {bookmark.description && <div className='text-sm'>
           {bookmark.description}
@@ -39,7 +47,6 @@ export default function Bookmark({
         }
       </div>
       {isAuthenticated && <DeleteBookmarkButton id={bookmark.id} />}
-
 
     </div>
   )
