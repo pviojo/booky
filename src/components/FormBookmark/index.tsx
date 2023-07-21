@@ -75,7 +75,7 @@ export default function FormBookmark(
       </div>);
   }
   return (
-    <div className='mb-10 mt-10'>
+    <div className='mt-10 mb-10'>
       <form style={{ overflow: 'hidden' }}>
         <div className='field field-suffix'>
           <label htmlFor="url">Url</label>
@@ -84,7 +84,7 @@ export default function FormBookmark(
         </div>
         {error && <div className='field field-suffix'>
           <div></div>
-          <div className="p-4 bg-red-100 text-red-700 rounded">
+          <div className="p-4 text-red-700 bg-red-100 rounded">
             <FontAwesomeIcon icon={faTimesCircle} className='mr-2' />
             {error}.
           </div>

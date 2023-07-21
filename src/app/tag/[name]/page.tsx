@@ -22,13 +22,13 @@ export default async function TagPage({
   return (
     <div className="inner">
       <div className="px-5 md:px-10">
-        <nav className="flex  mb-2" aria-label="Breadcrumb">
+        <nav className="flex mb-2 " aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li className="inline-flex items-center">
               <Link href="/" className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                 Bookmarks
               </Link>
-              <svg className="w-3 h-2 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <svg className="w-3 h-2 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
               </svg>
             </li>
@@ -40,7 +40,7 @@ export default async function TagPage({
           {bookmarks?.length ?
             <>{
               bookmarks.map((bookmark, i) => <div className="gap-6 flex py-4 [&:not(:last-child)]:border-b border-gray" key={bookmark.id} >
-                <div style={{ width: 40, height: 40 }} className="text-sm aspect-square inline-block bg-gray-200 dark:bg-gray-500 rounded-full grid items-center justify-center mt-1"><span>{i + 1}</span></div>
+                <div style={{ width: 40, height: 40 }} className="items-center justify-center inline-block mt-1 text-sm bg-gray-200 rounded-full aspect-square dark:bg-gray-500 grid"><span>{i + 1}</span></div>
                 <div className="flex-auto">
                   <Bookmark bookmark={bookmark} isAuthenticated={isAuthenticated} />
                 </div>

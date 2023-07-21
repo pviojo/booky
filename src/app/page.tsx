@@ -20,14 +20,14 @@ export default async function Home({
     <div className="inner">
       <div className="px-5 md:px-10 ">
         <div className='page-title'>Bookmarks</div>
-        <div className='grid  grid-cols-[1fr_300px] gap-10'>
+        <div className='grid text- grid-cols-[1fr_300px] gap-10'>
           <div>
             {isAuthenticated && <FormBookmark authorId={AUTHOR_ID} />}
             <div className='mt-10'>
               {bookmarks?.length ?
                 <>{
                   bookmarks.map((bookmark, i) => <div className="gap-6 flex py-4 [&:not(:last-child)]:border-b border-gray" key={bookmark.id} >
-                    <div style={{ width: 40, height: 40 }} className="text-sm aspect-square inline-block bg-gray-200 dark:bg-gray-500 rounded-full grid items-center justify-center mt-1"><span>{i + 1}</span></div>
+                    <div style={{ width: 40, height: 40 }} className="items-center justify-center inline-block mt-1 text-sm bg-gray-200 rounded-full grid aspect-square dark:bg-gray-500"><span>{i + 1}</span></div>
                     <div className="flex-auto">
                       <Bookmark bookmark={bookmark} isAuthenticated={isAuthenticated} />
                     </div>

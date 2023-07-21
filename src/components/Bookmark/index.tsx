@@ -19,16 +19,16 @@ export default function Bookmark({
   return (
     <div className='relative grid grid-cols-[1fr_auto_auto] gap-8'>
       <div>
-        {bookmark.title && <div className='text-lg mb-2'>
+        {bookmark.title && <div className='mb-2 text-lg'>
           {<a href={bookmark.url} target="_blank" rel="noreferrer">{bookmark.title}<FontAwesomeIcon icon={faExternalLink} className='ml-2' /></a>}
         </div>
         }
-        <div className='text-xs mb-8'>
+        <div className='mb-8 text-xs'>
           <a href={bookmark.url} target="_blank" rel="noreferrer" className='text-gray-500'>
             {bookmark.url}
           </a>
 
-          {bookmark.createdAt && <div className='text-xs mt-2'>
+          {bookmark.createdAt && <div className='mt-2 text-xs'>
             <FontAwesomeIcon icon={faCalendar} className='mr-2' />{dayjs(bookmark.createdAt).format('YYYY-MM-DD HH:mm')}
           </div>}
 
@@ -36,7 +36,7 @@ export default function Bookmark({
         {bookmark.description && <div className='text-sm'>
           {bookmark.description}
         </div>}
-        {bookmark.tags && <div className='text-sm mt-4'>
+        {bookmark.tags && <div className='mt-4 text-sm'>
           {bookmark.tags.map(tag => (<span key={tag.id} className="tag"><Link href={`/tag/${tag.name}`}>{tag.name}</Link></span>))}
         </div>}
       </div>

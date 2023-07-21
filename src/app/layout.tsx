@@ -45,7 +45,7 @@ export default function RootLayout({
             </Script>
           </> : null}
         <Providers>
-          <div className=" p-3 px-3 md:px-10 flex justify-between">
+          <div className="flex justify-between p-3 px-3  md:px-10">
             <div />
             <div>
               <ThemeButton />
@@ -53,7 +53,7 @@ export default function RootLayout({
           </div>
           {children}
           <div className="mt-20 mb-5">
-            <div className="inner p-3 px-11 flex justify-between items-end">
+            <div className="flex items-end justify-between p-3 inner px-11">
               <div className='text-xs'>
                 <FontAwesomeIcon icon={faHeart}
                   className='mr-2 color-purple'
