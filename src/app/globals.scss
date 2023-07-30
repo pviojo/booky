@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-}
-
 * {
   box-sizing: border-box;
 }
@@ -39,9 +36,6 @@
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.border-sep {
 }
 
 .bg-gray-2 {
